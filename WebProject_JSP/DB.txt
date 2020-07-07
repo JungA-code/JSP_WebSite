@@ -1,0 +1,102 @@
+﻿create schema `user` default character set utf8;
+
+use user;
+
+
+create table bbs(
+bbsID varchar(20),
+bbsTitle varchar(20),
+userID varchar(20),
+bbsDate varchar(20),
+bbsContent varchar(20),
+bbsAvailable varchar(20)
+);
+
+create table user(
+
+userID varchar(20) primary key,
+
+userPassword varchar(20),
+
+userName varchar(20),
+
+userGender varchar(20),
+
+userEmail varchar(20)
+
+);
+
+
+create table admin(
+
+userID varchar(20) primary key,
+
+userPassword varchar(20),
+
+userName varchar(20),
+
+userGender varchar(20),
+
+userEmail varchar(20)
+
+);
+
+ insert into user values ("a","a","b","c","d");
+
+CREATE TABLE `class_all` (
+ `teacher` varchar(20) DEFAULT NULL,
+  `name` varchar(200) DEFAULT NULL,
+  `class_value` varchar(10) DEFAULT NULL,
+  `detail` text,
+  `address` varchar(200) DEFAULT NULL,
+  `type` varchar(20) DEFAULT NULL,
+  `image` varchar(200) DEFAULT NULL,
+  `no` int(20) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`no`)
+
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+ 
+
+insert into user values ('aaa','aaa','name','남자','aaa@aaa');  
+
+insert into user values ('bbb','bbb','nameb','여자','bbb@bbb');    
+
+
+ 
+insert into class_all values ('빵형','코딩테스트','C','#1','https://www.youtube.com/watch?v=ExaatgwYqfU','C','c1.png',1);
+insert into class_all values ('빵형','코딩테스트','C','#2','https://www.youtube.com/watch?v=ExaatgwYqfU','C','c1.png',2);
+insert into class_all values ('빵형','코딩테스트','C','#3','https://www.youtube.com/watch?v=ExaatgwYqfU','C','c1.png',3);
+
+
+insert into class_all values ('동빈나','리듬게임 만들기','JAVA','#2','https://www.youtube.com/watch?v=xs92kqU2YWg&list=PLRx0vPvlEmdDySO3wDqMYGKMVH4Qa4QhR','JAVA','java1.png',4);
+insert into class_all values ('빵형','코딩테스트','JAVA','#1','https://www.youtube.com/watch?v=ExaatgwYqfU','JAVA','java2.png',5);
+
+insert into class_all values ('노마드코더','c/c++ 차이 알려드림','C2','-','https://www.youtube.com/watch?v=zGrTT4k1-yc','C2','c2.png',6);
+
+
+
+create table heart
+AS
+select *
+from user, class_all;
+
+alter table heart add heart varchar(20) default '0'; 
+set SQL_SAFE_UPDATES=0;
+select * from heart;
+
+create table class_list(
+	
+	ClassNo int(20) NOT NULL,
+    
+    CONSTRAINT class_all_no_fk
+   FOREIGN KEY (ClassNo) 
+   REFERENCES class_all (no),
+   
+   list varchar(20) DEFAULT NULL,
+   date varchar(20) DEFAULT NULL,
+   listNo int(20) NOT NULL PRIMARY KEY AUTO_INCREMENT
+)ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+insert into class_list values ('2','제1장','10.10',1);
+insert into class_list values ('2','제2장','10.11',2);
+
